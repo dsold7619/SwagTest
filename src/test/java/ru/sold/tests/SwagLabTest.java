@@ -8,7 +8,7 @@ import ru.sold.pages.StartPage;
 public class SwagLabTest extends BaseTests {
 
     @Test
-    public void test() {
+    public void correctLogin() {
         StartPage startPage = new StartPage(driver);
         startPage.inputUserName();
         startPage.inputUserPassword();

@@ -3,10 +3,8 @@ package ru.sold.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class StartPage {
-    private final WebDriver driver;
+public class StartPage extends BasePage {
     private final String pageUrl = "https://www.saucedemo.com/";
 
     @FindBy(xpath = "//div[@class='login_container']")
@@ -22,9 +20,7 @@ public class StartPage {
     private WebElement userLogin;
 
     public StartPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-        checkPageInit();
+        super(driver);
     }
 
     public void inputUserName() {
@@ -41,7 +37,7 @@ public class StartPage {
         userLogin.click();
     }
 
-    private void checkPageInit() {
+    public void checkPageInit() {
         if (!pageUrl.equals(driver.getCurrentUrl()) & loginContainer.isDisplayed()) {
             throw new AssertionError("Error loading page");
         }
