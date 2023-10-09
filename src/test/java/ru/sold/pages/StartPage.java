@@ -19,27 +19,28 @@ public class StartPage extends BasePage {
     @FindBy(xpath = "//input[@id='login-button']")
     private WebElement userLogin;
 
+    @FindBy(xpath = "//div[@class='error-message-container error']")
+    private WebElement error;
+
     public StartPage(WebDriver driver) {
         super(driver);
-    }
-
-    public void inputUserName() {
-        userName.click();
-        userName.sendKeys("standard_user");
-    }
-
-    public void inputUserPassword() {
-        userPassword.click();
-        userPassword.sendKeys("secret_sauce");
-    }
-
-    public void buttonLogin() {
-        userLogin.click();
     }
 
     public void checkPageInit() {
         if (!pageUrl.equals(driver.getCurrentUrl()) & loginContainer.isDisplayed()) {
             throw new AssertionError("Error loading page");
         }
+    }
+
+    public void login(String password, String name) {
+        userName.click();
+        userName.sendKeys(name);
+        userPassword.click();
+        userPassword.sendKeys(password);
+        userLogin.click();
+    }
+
+    public boolean isExistError() {
+        return error.isDisplayed();
     }
 }
