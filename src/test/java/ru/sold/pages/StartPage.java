@@ -27,7 +27,7 @@ public class StartPage extends BasePage {
     }
 
     public void checkPageInit() {
-        if (!pageUrl.equals(driver.getCurrentUrl()) & loginContainer.isDisplayed()) {
+        if (!pageUrl.equals(driver.getCurrentUrl()) & !loginContainer.isDisplayed()) {
             throw new AssertionError("Error loading page");
         }
     }

@@ -5,8 +5,7 @@ import org.junit.Test;
 import ru.sold.pages.ProductsPage;
 import ru.sold.pages.StartPage;
 
-
-public class SwagLabTest extends BaseTests {
+public class LoginTest extends BaseTests {
 
     @Test
     public void correctLogin() {
