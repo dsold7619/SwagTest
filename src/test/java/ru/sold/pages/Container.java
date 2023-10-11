@@ -5,12 +5,10 @@ import org.openqa.selenium.WebDriver;
 
 public class Container {
     private final WebDriver driver;
-    private final String baseXPath;
     private final String currentXPath;
 
     public Container(WebDriver driver, String baseXPath, int index) {
         this.driver = driver;
-        this.baseXPath = baseXPath;
         this.currentXPath = baseXPath + "[" + index + "]";
         checkInit();
     }
@@ -23,10 +21,6 @@ public class Container {
 
     public WebDriver getDriver() {
         return driver;
-    }
-
-    public String getBaseXPath() {
-        return baseXPath;
     }
 
     public String getCurrentXPath() {

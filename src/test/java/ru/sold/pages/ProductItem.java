@@ -6,21 +6,19 @@ import org.openqa.selenium.WebElement;
 
 public class ProductItem extends Container {
     private final WebElement title;
+    private final WebElement picture;
 
-    public ProductItem(WebDriver driver, String containerBase) {
-        this(driver, containerBase, 1);
-    }
-
-    private ProductItem(WebDriver driver, String baseXPath, int index) {
+    public ProductItem(WebDriver driver, String baseXPath, int index) {
         super(driver, baseXPath, index);
         this.title = get(getCurrentXPath() + "//button");
-    }
-
-    public ProductItem get(int index) {
-        return new ProductItem(getDriver(), getBaseXPath(), index);
+        this.picture = get(getCurrentXPath() + "//div[@class='inventory_item_img']");
     }
 
     private WebElement get(String Xpath) {
         return getDriver().findElement(By.xpath(Xpath));
+    }
+
+    public boolean isPictureDisplayed() {
+        return picture.isDisplayed();
     }
 }

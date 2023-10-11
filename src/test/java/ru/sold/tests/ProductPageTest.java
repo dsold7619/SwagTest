@@ -1,7 +1,7 @@
 package ru.sold.tests;
 
+import org.junit.Assert;
 import org.junit.Test;
-import ru.sold.pages.ProductItem;
 import ru.sold.pages.ProductsPage;
 import ru.sold.pages.StartPage;
 
@@ -12,6 +12,7 @@ public class ProductPageTest extends BaseTests {
         StartPage startPage = new StartPage(driver);
         startPage.login("secret_sauce", "standard_user");
         ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.productItem.get(3);
+
+        productsPage.getProductItems().forEach(item -> Assert.assertTrue(item.isPictureDisplayed()));
     }
 }
