@@ -11,7 +11,7 @@ public class ProductItem extends Container {
 
     public ProductItem(WebDriver driver, String baseXPath, int index) {
         super(driver, baseXPath, index);
-        this.title = get(getCurrentXPath() + "//div[@class='inventory_item_name']");
+        this.title = get(getCurrentXPath() + "//div[@class='inventory_item_name ']");
         this.picture = get(getCurrentXPath() + "//div[@class='inventory_item_img']");
         this.button = get(getCurrentXPath() + "//button");
     }
