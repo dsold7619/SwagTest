@@ -32,7 +32,7 @@ public class StartPage extends BasePage {
         }
     }
 
-    public void login(String password, String name) {
+    public void login(String name, String password) {
         userName.click();
         userName.sendKeys(name);
         userPassword.click();
