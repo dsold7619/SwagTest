@@ -24,6 +24,7 @@ public class StartPage extends BasePage {
 
     public StartPage(WebDriver driver) {
         super(driver);
+        checkPageInit();
     }
 
     public void checkPageInit() {

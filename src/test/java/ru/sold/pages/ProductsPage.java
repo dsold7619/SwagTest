@@ -12,6 +12,8 @@ public class ProductsPage extends BasePage {
     private final String pageUrl = "https://www.saucedemo.com/inventory.html";
     @FindBy(xpath = "//div[(@id='inventory_container') and contains(@class,'inventory_container')]")
     private WebElement container;
+    @FindBy(xpath = "//button[@id='react-burger-menu-btn']")
+    private WebElement sideBarBtn;
 
     private final String productItemBaseXPath = "//div[@class='inventory_item']";
     private final List<ProductItem> productItems = new ArrayList<>();
@@ -38,5 +40,10 @@ public class ProductsPage extends BasePage {
             ProductItem productItem = new ProductItem(driver, productItemBaseXPath, index);
             productItems.add(productItem);
         }
+    }
+
+    public SideBar clickSideBarBtn() {
+        sideBarBtn.click();
+        return new SideBar(driver);
     }
 }

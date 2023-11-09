@@ -10,7 +10,7 @@ public class LoginTest extends BaseTests {
     @Test
     public void correctLogin() {
         StartPage startPage = new StartPage(driver);
-        startPage.login("secret_sauce", "standard_user");
+        startPage.login("standard_user", "secret_sauce");
         new ProductsPage(driver);
     }
 
