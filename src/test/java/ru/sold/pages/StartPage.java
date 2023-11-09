@@ -44,4 +44,9 @@ public class StartPage extends BasePage {
     public boolean isExistError() {
         return error.isDisplayed();
     }
+
+    public ProductsPage navigateToProductsPage() {
+        login("standard_user", "secret_sauce");
+        return new ProductsPage(driver);
+    }
 }

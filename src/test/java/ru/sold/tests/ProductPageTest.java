@@ -10,28 +10,22 @@ public class ProductPageTest extends BaseTests {
 
     @Test
     public void checkPictureForProductItems() {
-        ProductsPage productsPage = navigateToProductsPage();
+        ProductsPage productsPage = new StartPage(driver).navigateToProductsPage();
         productsPage.getProductItems().forEach(item -> Assert.assertTrue(item.isPictureDisplayed()));
     }
 
     @Test
     public void checkTitleForProductItem() {
-        ProductsPage productsPage = navigateToProductsPage();
+        ProductsPage productsPage = new StartPage(driver).navigateToProductsPage();
         String actualTitle = productsPage.getProductItems().get(0).getTitle();
         Assert.assertEquals("Sauce Labs Backpack", actualTitle);
     }
 
     @Test
     public void checkLogoutFromSideBar() {
-        ProductsPage productsPage = navigateToProductsPage();
+        ProductsPage productsPage = new StartPage(driver).navigateToProductsPage();
         SideBar sideBar = productsPage.clickSideBarBtn();
         sideBar.clickLogoutBtn();
         new StartPage(driver);
-    }
-
-    private ProductsPage navigateToProductsPage() {
-        StartPage startPage = new StartPage(driver);
-        startPage.login("standard_user", "secret_sauce");
-        return new ProductsPage(driver);
     }
 }
