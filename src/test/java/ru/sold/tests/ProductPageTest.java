@@ -24,7 +24,7 @@ public class ProductPageTest extends BaseTests {
     @Test
     public void checkLogoutFromSideBar() {
         ProductsPage productsPage = new StartPage(driver).navigateToProductsPage();
-        SideBar sideBar = productsPage.clickSideBarBtn();
+        SideBar sideBar = productsPage.getHeaderPanel().clickSideBarBtn();
         sideBar.clickLogoutBtn();
         new StartPage(driver);
     }

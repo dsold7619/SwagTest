@@ -15,8 +15,9 @@ public class HeaderPanel {
         this.cartBtn = driver.findElement(By.xpath("//a[@class='shopping_cart_link']"));
     }
 
-    public void clickSideBarBtn() {
+    public SideBar clickSideBarBtn() {
         sideBarBtn.click();
+        return new SideBar(driver);
     }
 
     public void clickCartBtn() {
