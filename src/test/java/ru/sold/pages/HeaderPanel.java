@@ -1,18 +1,18 @@
 package ru.sold.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class HeaderPanel {
-    private final WebDriver driver;
-    private final WebElement sideBarBtn;
-    private final WebElement cartBtn;
+public class HeaderPanel extends BaseElement {
+    @FindBy(xpath = "//button[@id='react-burger-menu-btn']")
+    private WebElement sideBarBtn;
+
+    @FindBy(xpath = "//a[@class='shopping_cart_link']")
+    private WebElement cartBtn;
 
     public HeaderPanel(WebDriver driver) {
-        this.driver = driver;
-        this.sideBarBtn = driver.findElement(By.xpath("//button[@id='react-burger-menu-btn']"));
-        this.cartBtn = driver.findElement(By.xpath("//a[@class='shopping_cart_link']"));
+        super(driver);
     }
 
     public SideBar clickSideBarBtn() {
