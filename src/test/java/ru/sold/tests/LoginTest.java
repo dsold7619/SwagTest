@@ -8,14 +8,14 @@ public class LoginTest extends BaseTests {
 
     @Test
     public void correctLogin() {
-        new StartPage(driver).navigateToProductsPage();
+        new StartPage().navigateToProductsPage();
     }
 
     @Test
     public void invalidLogin() {
-        StartPage startPage = new StartPage(driver);
+        StartPage startPage = new StartPage();
         startPage.login("123", "standard_user");
-        Assert.assertTrue(new StartPage(driver).isExistError());
+        Assert.assertTrue(new StartPage().isExistError());
     }
 }
 

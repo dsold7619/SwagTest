@@ -1,13 +1,11 @@
 package ru.sold.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import ru.sold.manager.DriverManager;
 
 public abstract class BaseElement {
-    protected final WebDriver driver;
 
-    public BaseElement(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-      }
+    public BaseElement() {
+        PageFactory.initElements(DriverManager.getInstance().getDriver(), this);
+    }
 }

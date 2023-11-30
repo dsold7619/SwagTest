@@ -1,8 +1,8 @@
 package ru.sold.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ru.sold.manager.DriverManager;
 
 public class StartPage extends BasePage {
     private final String pageUrl = "https://www.saucedemo.com/";
@@ -22,13 +22,13 @@ public class StartPage extends BasePage {
     @FindBy(xpath = "//div[@class='error-message-container error']")
     private WebElement error;
 
-    public StartPage(WebDriver driver) {
-        super(driver);
+    public StartPage() {
+
         checkPageInit();
     }
 
     public void checkPageInit() {
-        if (!pageUrl.equals(driver.getCurrentUrl()) & !loginContainer.isDisplayed()) {
+        if (!pageUrl.equals(DriverManager.getInstance().getDriver().getCurrentUrl()) & !loginContainer.isDisplayed()) {
             throw new AssertionError("Error loading page");
         }
     }
@@ -47,6 +47,6 @@ public class StartPage extends BasePage {
 
     public ProductsPage navigateToProductsPage() {
         login("standard_user", "secret_sauce");
-        return new ProductsPage(driver);
+        return new ProductsPage();
     }
 }

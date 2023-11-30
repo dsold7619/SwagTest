@@ -1,6 +1,5 @@
 package ru.sold.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -20,10 +19,6 @@ public class SideBar extends BaseElement {
 
     @FindBy(xpath = "//button[@id='react-burger-cross-btn']")
     private WebElement crossBtn;
-
-    public SideBar(WebDriver driver) {
-        super(driver);
-    }
 
     public void clickLogoutBtn() {
         logoutBtn.click();

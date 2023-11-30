@@ -1,15 +1,12 @@
 package ru.sold.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import ru.sold.manager.DriverManager;
 
 public abstract class BasePage {
-    protected final WebDriver driver;
 
-    public BasePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-        checkPageInit();
+    public BasePage() {
+        PageFactory.initElements(DriverManager.getInstance().getDriver(), this);
     }
 
     public abstract void checkPageInit();
