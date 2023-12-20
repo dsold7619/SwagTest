@@ -24,6 +24,23 @@ public class ProductItem extends Container {
         return title.getText();
     }
 
+    public void clickAddToCartButton() {
+        if (button.getText().contains("Add to cart")) {
+            button.click();
+        } else {
+            throw new RuntimeException("This button hasn't label 'Add to cart'");
+        }
+    }
+
+    public void clickRemoveButton() {
+        if (button.getText().contains("Remove")) {
+            button.click();
+        } else {
+            throw new RuntimeException("This button hasn't label 'Remove'");
+        }
+    }
+
+
     private WebElement get(String Xpath) {
         return getDriver().findElement(By.xpath(Xpath));
     }
