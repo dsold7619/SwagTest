@@ -30,6 +30,6 @@ public class CartPageTest extends BaseTests {
                 .map(CartItem::getTitle)
                 .toList();
 
-        Assert.assertEquals(productItemTitles, cartItemTitles);
+        Assert.assertEquals("Selected product doesn't match product in cart", productItemTitles, cartItemTitles);
     }
 }

@@ -15,7 +15,7 @@ public class LoginTest extends BaseTests {
     public void invalidLogin() {
         StartPage startPage = new StartPage();
         startPage.login("123", "standard_user");
-        Assert.assertTrue(new StartPage().isExistError());
+        Assert.assertTrue("Page didn't load", new StartPage().isExistError());
     }
 }
 
