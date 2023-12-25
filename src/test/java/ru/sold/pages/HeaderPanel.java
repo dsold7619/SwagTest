@@ -15,7 +15,8 @@ public class HeaderPanel extends BaseElement {
         return new SideBar();
     }
 
-    public void clickCartBtn() {
+    public CartPage clickCartBtn() {
         cartBtn.click();
+        return new CartPage();
     }
 }

@@ -40,6 +40,10 @@ public class ProductItem extends Container {
         }
     }
 
+    public String getButtonText() {
+        return button.getText();
+    }
+
 
     private WebElement get(String Xpath) {
         return getDriver().findElement(By.xpath(Xpath));

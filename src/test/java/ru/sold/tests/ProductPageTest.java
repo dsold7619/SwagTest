@@ -2,6 +2,7 @@ package ru.sold.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.sold.pages.CartPage;
 import ru.sold.pages.ProductsPage;
 import ru.sold.pages.SideBar;
 import ru.sold.pages.StartPage;
@@ -27,5 +28,17 @@ public class ProductPageTest extends BaseTests {
         SideBar sideBar = productsPage.getHeaderPanel().clickSideBarBtn();
         sideBar.clickLogoutBtn();
         new StartPage();
+    }
+
+    @Test
+    public void checkProductItemButtonText() {
+        ProductsPage productsPage = new StartPage().navigateToProductsPage();
+        productsPage.getProductItems().get(0).clickAddToCartButton();
+
+        CartPage cartPage = productsPage.getHeaderPanel().clickCartBtn();
+        Assert.assertEquals(1, cartPage.getCartItems().size());
+        productsPage = cartPage.clickContinueShoppingButton();
+        String textAfter = productsPage.getProductItems().get(0).getButtonText();
+        Assert.assertEquals("Remove", textAfter);
     }
 }

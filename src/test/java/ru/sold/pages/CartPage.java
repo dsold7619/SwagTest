@@ -30,6 +30,7 @@ public class CartPage extends BasePage {
     public CartPage() {
         driver = DriverManager.getInstance().getDriver();
         checkPageInit();
+        createCarItems();
     }
 
     public void checkPageInit() {
@@ -40,6 +41,11 @@ public class CartPage extends BasePage {
 
     public List<CartItem> getCartItems() {
         return cartItems;
+    }
+
+    public ProductsPage clickContinueShoppingButton() {
+        continueShoppingButton.click();
+        return new ProductsPage();
     }
 
     private void createCarItems() {
