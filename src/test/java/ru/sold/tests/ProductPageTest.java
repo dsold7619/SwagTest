@@ -18,7 +18,7 @@ public class ProductPageTest extends BaseTests {
     @Test
     public void checkTitleForProductItem() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
-        String actualTitle = productsPage.getProductItems().get(0).getTitle();
+        String actualTitle = productsPage.getFirstProductItem().getTitle();
         Assert.assertEquals("Product name in the cart doesn't match selected","Sauce Labs Backpack", actualTitle);
     }
 
@@ -33,12 +33,12 @@ public class ProductPageTest extends BaseTests {
     @Test
     public void checkProductItemButtonText() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
-        productsPage.getProductItems().get(0).clickAddToCartButton();
+        productsPage.getFirstProductItem().clickAddToCartButton();
 
         CartPage cartPage = productsPage.getHeaderPanel().clickCartBtn();
         Assert.assertEquals(1, cartPage.getCartItems().size());
         productsPage = cartPage.clickContinueShoppingButton();
-        String textAfter = productsPage.getProductItems().get(0).getButtonText();
+        String textAfter = productsPage.getFirstProductItem().getButtonText();
         Assert.assertEquals("Button name did not change after adding the product to the cart","Remove", textAfter);
     }
 }

@@ -32,6 +32,10 @@ public class ProductsPage extends BasePage {
         return productItems;
     }
 
+    public ProductItem getFirstProductItem(){
+        return productItems.get(0);
+    }
+
     public void checkPageInit() {
         if (!pageUrl.equals(driver.getCurrentUrl()) & !container.isDisplayed()) {
             throw new AssertionError("Error loading page");
