@@ -67,4 +67,26 @@ public class ProductPageTest extends BaseTests {
 
         Assert.assertEquals("Nomenclature from the ProductsPage corresponds with the CartPage", productItemTitles, cartItemTitles);
     }
+
+    @Test
+    public void checkCartBadge() {
+        ProductsPage productsPage = new StartPage().navigateToProductsPage();
+        productsPage.getProductItems().stream()
+                .limit(3)
+                .forEach(ProductItem::clickAddToCartButton);
+        Assert.assertEquals(3, productsPage.getHeaderPanel().getAmountOfCartItems());
+    }
+
+    @Test
+    public void checkCartBadgeDecrease() {
+        ProductsPage productsPage = new StartPage().navigateToProductsPage();
+        productsPage.getProductItems().stream()
+                .limit(3)
+                .forEach(ProductItem::clickAddToCartButton);
+
+        // The DOM was changed through the action
+        // https://stackoverflow.com/questions/18225997/stale-element-reference-element-is-not-attached-to-the-page-document
+        new ProductsPage().getFirstProductItem().clickRemoveButton();
+        Assert.assertEquals(2, productsPage.getHeaderPanel().getAmountOfCartItems());
+    }
 }
