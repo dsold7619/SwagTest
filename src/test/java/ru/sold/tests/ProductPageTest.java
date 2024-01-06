@@ -1,7 +1,7 @@
 package ru.sold.tests;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import ru.sold.pages.*;
 
 import java.util.List;
@@ -11,14 +11,14 @@ public class ProductPageTest extends BaseTests {
     @Test
     public void checkPictureForProductItems() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
-        productsPage.getProductItems().forEach(item -> Assert.assertTrue(item.isPictureDisplayed()));
+        productsPage.getProductItems().forEach(item -> Assertions.assertTrue(item.isPictureDisplayed()));
     }
 
     @Test
     public void checkTitleForProductItem() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         String actualTitle = productsPage.getFirstProductItem().getTitle();
-        Assert.assertEquals("Product name in the cart doesn't match selected", "Sauce Labs Backpack", actualTitle);
+        Assertions.assertEquals("Sauce Labs Backpack", actualTitle, "Product name in the cart doesn't match selected");
     }
 
     @Test
@@ -35,10 +35,10 @@ public class ProductPageTest extends BaseTests {
         productsPage.getFirstProductItem().clickAddToCartButton();
 
         CartPage cartPage = productsPage.getHeaderPanel().clickCartBtn();
-        Assert.assertEquals(1, cartPage.getCartItems().size());
+        Assertions.assertEquals(1, cartPage.getCartItems().size());
         productsPage = cartPage.clickContinueShoppingButton();
         String textAfter = productsPage.getFirstProductItem().getButtonText();
-        Assert.assertEquals("Button name did not change after adding the product to the cart", "Remove", textAfter);
+        Assertions.assertEquals("Remove", textAfter, "Button name did not change after adding the product to the cart");
     }
 
     @Test
@@ -65,7 +65,7 @@ public class ProductPageTest extends BaseTests {
                 .map(CartItem::getTitle)
                 .toList();
 
-        Assert.assertEquals("Nomenclature from the ProductsPage corresponds with the CartPage", productItemTitles, cartItemTitles);
+        Assertions.assertEquals(productItemTitles, cartItemTitles, "Nomenclature from the ProductsPage corresponds with the CartPage");
     }
 
     @Test
@@ -74,7 +74,7 @@ public class ProductPageTest extends BaseTests {
         productsPage.getProductItems().stream()
                 .limit(3)
                 .forEach(ProductItem::clickAddToCartButton);
-        Assert.assertEquals(3, productsPage.getHeaderPanel().getAmountOfCartItems());
+        Assertions.assertEquals(3, productsPage.getHeaderPanel().getAmountOfCartItems());
     }
 
     @Test
@@ -87,6 +87,6 @@ public class ProductPageTest extends BaseTests {
         // The DOM was changed through the action
         // https://stackoverflow.com/questions/18225997/stale-element-reference-element-is-not-attached-to-the-page-document
         new ProductsPage().getFirstProductItem().clickRemoveButton();
-        Assert.assertEquals(2, productsPage.getHeaderPanel().getAmountOfCartItems());
+        Assertions.assertEquals(2, productsPage.getHeaderPanel().getAmountOfCartItems());
     }
 }

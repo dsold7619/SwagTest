@@ -1,7 +1,7 @@
 package ru.sold.tests;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import ru.sold.pages.*;
 
 import java.util.List;
@@ -30,6 +30,6 @@ public class CartPageTest extends BaseTests {
                 .map(CartItem::getTitle)
                 .toList();
 
-        Assert.assertEquals("Selected product doesn't match product in cart", productItemTitles, cartItemTitles);
+        Assertions.assertEquals(productItemTitles, cartItemTitles, "Selected product doesn't match product in cart");
     }
 }
