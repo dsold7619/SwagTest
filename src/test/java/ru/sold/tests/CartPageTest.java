@@ -1,6 +1,7 @@
 package ru.sold.tests;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.sold.pages.*;
 
@@ -9,6 +10,7 @@ import java.util.List;
 public class CartPageTest extends BaseTests {
 
     @Test
+    @Tag("HeaderPanel")
     public void checkCartPageInit() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         productsPage.getHeaderPanel().clickCartBtn();
@@ -16,6 +18,8 @@ public class CartPageTest extends BaseTests {
     }
 
     @Test
+    @Tag("ProductItems")
+    @Tag("CartItems")
     public void checkCartItemOnCartPage() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
 

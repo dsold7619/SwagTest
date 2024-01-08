@@ -1,6 +1,7 @@
 package ru.sold.tests;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.sold.pages.*;
 
@@ -9,12 +10,14 @@ import java.util.List;
 public class ProductPageTest extends BaseTests {
 
     @Test
+    @Tag("ProductItems")
     public void checkPictureForProductItems() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         productsPage.getProductItems().forEach(item -> Assertions.assertTrue(item.isPictureDisplayed()));
     }
 
     @Test
+    @Tag("ProductItems")
     public void checkTitleForProductItem() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         String actualTitle = productsPage.getFirstProductItem().getTitle();
@@ -22,6 +25,7 @@ public class ProductPageTest extends BaseTests {
     }
 
     @Test
+    @Tag("SideBar")
     public void checkLogoutFromSideBar() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         SideBar sideBar = productsPage.getHeaderPanel().clickSideBarBtn();
@@ -30,6 +34,7 @@ public class ProductPageTest extends BaseTests {
     }
 
     @Test
+    @Tag("ProductItems")
     public void checkProductItemButtonText() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         productsPage.getFirstProductItem().clickAddToCartButton();
@@ -42,6 +47,8 @@ public class ProductPageTest extends BaseTests {
     }
 
     @Test
+    @Tag("ProductItems")
+    @Tag("CartItems")
     public void checkProductItemButtonRemove() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         productsPage.getProductItems().stream()
@@ -69,6 +76,7 @@ public class ProductPageTest extends BaseTests {
     }
 
     @Test
+    @Tag("Cart")
     public void checkCartBadge() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         productsPage.getProductItems().stream()
@@ -78,6 +86,7 @@ public class ProductPageTest extends BaseTests {
     }
 
     @Test
+    @Tag("Cart")
     public void checkCartBadgeDecrease() {
         ProductsPage productsPage = new StartPage().navigateToProductsPage();
         productsPage.getProductItems().stream()
