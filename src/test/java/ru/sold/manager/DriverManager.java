@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.sold.utils.PropsConst;
 
+import java.time.Duration;
+
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class DriverManager {
@@ -39,7 +41,7 @@ public class DriverManager {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(propManager.getProperty(PropsConst.PAGE_LOAD_TIMEOUT)), SECONDS);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(propManager.getProperty(PropsConst.IMPLICITLY_WAIT)), SECONDS);
-        wait = new WebDriverWait(driver, 5, 2000);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5), Duration.ofSeconds(2000));
     }
 
     public void quitDriver() {
