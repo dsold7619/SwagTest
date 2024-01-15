@@ -3,6 +3,8 @@ package ru.sold.manager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.sold.utils.PropsConst;
 
@@ -34,10 +36,26 @@ public class DriverManager {
     }
 
     private void initDriver() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        System.setProperty("webdriver.chrome.driver", propManager.getProperty(PropsConst.PATH_CHROME_DRIVER_WINDOWS));
-        driver = new ChromeDriver();
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--remote-allow-origins=*");
+//        System.setProperty("webdriver.chrome.driver", propManager.getProperty(PropsConst.PATH_CHROME_DRIVER_WINDOWS));
+//        driver = new ChromeDriver();
+
+
+//        FirefoxOptions options = new FirefoxOptions();
+//        options.addArguments("--remote-allow-origins=*");
+        System.setProperty("webdriver.gecko.driver", propManager.getProperty(PropsConst.PATH_GECKO_DRIVER_WINDOWS));
+//        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+//        capabilities.setCapability("marionette",true);
+//        WebDriver driver= new FirefoxDriver(capabilities);
+//        FirefoxOptions options = new FirefoxOptions();
+//        options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+//        driver = webdriver.Firefox(executable_path=r'C:\WebDrivers\geckodriver.exe', options=options);
+//        driver = new FirefoxDriver(options);
+
+        driver = new FirefoxDriver();
+
+
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(propManager.getProperty(PropsConst.PAGE_LOAD_TIMEOUT)), SECONDS);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(propManager.getProperty(PropsConst.IMPLICITLY_WAIT)), SECONDS);
