@@ -1,6 +1,5 @@
 package ru.sold.manager;
 
-import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -36,21 +35,20 @@ public class DriverManager {
     }
 
     private void initDriver() {
-        String typeBrowser = PropsConst.TYPE_BROWSER;
+        String typeBrowser = propManager.getProperty(PropsConst.TYPE_BROWSER);
         switch (typeBrowser) {
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", propManager.getProperty(PropsConst.PATH_GECKO_DRIVER_WINDOWS));
                 driver = new FirefoxDriver();
                 break;
             case "chrome":
+            default:
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
                 System.setProperty("webdriver.chrome.driver", propManager.getProperty(PropsConst.PATH_CHROME_DRIVER_WINDOWS));
                 driver = new ChromeDriver();
                 break;
-            default:
-                driver = new ChromeDriver();
-                   }
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(propManager.getProperty(PropsConst.PAGE_LOAD_TIMEOUT)), SECONDS);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(propManager.getProperty(PropsConst.IMPLICITLY_WAIT)), SECONDS);
