@@ -42,17 +42,8 @@ public class DriverManager {
 //        driver = new ChromeDriver();
 
 
-//        FirefoxOptions options = new FirefoxOptions();
-//        options.addArguments("--remote-allow-origins=*");
-        System.setProperty("webdriver.gecko.driver", propManager.getProperty(PropsConst.PATH_GECKO_DRIVER_WINDOWS));
-//        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-//        capabilities.setCapability("marionette",true);
-//        WebDriver driver= new FirefoxDriver(capabilities);
-//        FirefoxOptions options = new FirefoxOptions();
-//        options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
-//        driver = webdriver.Firefox(executable_path=r'C:\WebDrivers\geckodriver.exe', options=options);
-//        driver = new FirefoxDriver(options);
 
+        System.setProperty("webdriver.gecko.driver", propManager.getProperty(PropsConst.PATH_GECKO_DRIVER_WINDOWS));
         driver = new FirefoxDriver();
 
 
