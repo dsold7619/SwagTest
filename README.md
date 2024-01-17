@@ -8,6 +8,7 @@ SwagTest
 * execute all tests `mvn clean test`
 * execute tests with tags `mvn test -Dgroups="Cart, Login"`
 * execute tests and get report `mvn surefire-report:report` 
+* execute tests with overriding application properties `mvn test "-Dtype.browser=firefox"`
 
 **Tags:**
 * "ProductItems"

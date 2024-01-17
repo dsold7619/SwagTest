@@ -11,6 +11,7 @@ public class TestPropManager {
 
     private TestPropManager() {
         loadApplicationProperties();
+        loadCustomProperties();
     }
 
     public static TestPropManager getInstance() {
@@ -26,6 +27,16 @@ public class TestPropManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void loadCustomProperties() {
+        PROPERTIES.forEach((key, value) ->
+                System.getProperties().forEach((customKey, customValue) -> {
+                            if (key.toString().equals(customKey.toString()) && value.toString().equals(customValue.toString())) {
+                                PROPERTIES.setProperty(key.toString(), customValue.toString());
+                            }
+                        }
+                ));
     }
 
     public String getProperty(String key, String defaultValue) {
